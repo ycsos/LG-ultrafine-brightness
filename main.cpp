@@ -38,7 +38,7 @@ static int get_lg_ultrafine_usb_devices(libusb_device **devs, int usb_cnt, libus
 	int r = libusb_get_device_descriptor(devs[i], &desc);
 	auto lg_search = support_device.find(desc.idProduct);
 	if (lg_search != support_device.end()) {
-	  *lg_devs[k++] = devs[i];
+	  (*lg_devs)[k++] = devs[i];
 	}
   }
 
@@ -99,6 +99,9 @@ int main() {
 	int chooseDisplay = atoi(&c);
 	clear();
 	Display_pool[chooseDisplay].interactive();
+	for(auto &a : Display_pool){
+	  a.LG_Close();
+	}
   }
 
   endwin();

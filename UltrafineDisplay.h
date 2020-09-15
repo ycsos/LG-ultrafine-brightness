@@ -25,6 +25,7 @@ extern unordered_map<uint16_t, char *> support_device;
 class UltrafineDisplay {
  public:
   UltrafineDisplay(libusb_device * lg_usb);
+  UltrafineDisplay(const UltrafineDisplay &a);
   ~UltrafineDisplay();
   uint16_t get_brightness();
   void set_brightness(uint16_t val);
@@ -32,6 +33,7 @@ class UltrafineDisplay {
   void set_brightness_level(uint8_t);
   char * getDisplayName();
   void interactive();
+  void LG_Close();
  private:
   char DisplayType[128];
   uint16_t product_id;

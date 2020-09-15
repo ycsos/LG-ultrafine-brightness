@@ -25,7 +25,21 @@ UltrafineDisplay::UltrafineDisplay(libusb_device *lg_usb) {
   }
 }
 
+UltrafineDisplay::UltrafineDisplay(const UltrafineDisplay &a) {
+  strcpy(DisplayType, a.DisplayType);
+  product_id = a.product_id;
+  vendor_id = a.vendor_id;
+  lg_dev = a.lg_dev;
+  lg_handle = a.lg_handle;
+  lg_iface = 1;
+  libusb_success = 0;
+  brightness_step = 5;
+}
+
 UltrafineDisplay::~UltrafineDisplay(){
+}
+
+void UltrafineDisplay::LG_Close(){
   if (libusb_success == LIBUSB_SUCCESS){
 	libusb_release_interface(lg_handle, lg_iface);
 	libusb_attach_kernel_driver(lg_handle, lg_iface);
