@@ -14,6 +14,8 @@ A tool to adjust LG Ultrafine Series Monitor without Bootcamp in Linux and Windo
 ## Usage:
 (sudo is need due to libusb)
 
-`sudo ./LG-ultrafine-beightness`
+manuall set brightness: `sudo ./LG-ultrafine-beightness`
+
+directly set brightness to 20 through cmd: `sudo ./LG-ultrafine-beightness 20`
 
 
